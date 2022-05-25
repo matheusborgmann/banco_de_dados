@@ -84,5 +84,4 @@ CodTit INTEGER NOT NULL,
 NomeTit VARCHAR(50) NOT NULL,
 PRIMARY KEY (CodTit)
 );
--- Your code here!
 
