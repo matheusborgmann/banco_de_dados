@@ -18,6 +18,7 @@ CREATE TABLE PreReq(
     NumDisc INTEGER NOT NULL, 
     CodDeptoPreReq INTEGER NOT NULL, 
     NumDiscPreReq INTEGER NOT NULL, 
+    PRIMARY KEY (CodDepto, NumDisc, CodDeptoPreReq, NumDiscPreReq),
     FOREIGN KEY (CodDepto, NumDisc) REFERENCES Disciplina (CodDepto, NumDisc),
     FOREIGN KEY (CodDeptoPreReq, NumDiscPreReq) REFERENCES Disciplina(CodDepto, NumDisc)
 );
@@ -28,7 +29,7 @@ CREATE TABLE Turma(
     NumDisc INTEGER NOT NULL, 
     SiglaTur VARCHAR(50) NOT NULL, 
     CapacOfer INTEGER NOT NULL,
-    PRIMARY KEY (AnoSem, SiglaTur),
+    PRIMARY KEY (AnoSem, SiglaTur, NumDisc, CodDepto),
     FOREIGN KEY (CodDepto, NumDisc) REFERENCES Disciplina(CodDepto, NumDisc)
 );
 
@@ -42,6 +43,7 @@ HoraInicio FLOAT NOT NULL,
 NumHoras INTEGER NOT NULL,
 CodPred INTEGER NOT NULL,
 NumSala INTEGER NOT NULL,
+PRIMARY KEY (AnoSem, CodDepto, NumDisc, SiglaTur),
 FOREIGN KEY (AnoSem, CodDepto, NumDisc, SiglaTur) REFERENCES Turma(AnoSem, CodDepto, NumDisc, SiglaTur),
 FOREIGN KEY (CodPred, NumSala) REFERENCES Sala(CodPred, NumSala)
 );
@@ -56,6 +58,7 @@ CREATE TABLE Sala(
 CodPred INTEGER NOT NULL,
 NumSala INTEGER NOT NULL,
 CapacSala INTEGER NOT NULL,
+PRIMARY KEY (CodPred, NumSala),
 FOREIGN KEY (CodPred) REFERENCES Predio(CodPred)
 );
 
@@ -75,6 +78,7 @@ CodDepto INTEGER NOT NULL,
 NumDisc INTEGER NOT NULL,
 SiglaTur VARCHAR(50) NOT NULL, 
 CodProf INTEGER NOT NULL, 
+PRIMARY KEY (AnoSem, CodDepto, NumDisc, SiglaTur, CodProf),
 FOREIGN KEY (AnoSem, CodDepto, NumDisc, SiglaTur) REFERENCES Turma(AnoSem, CodDepto, NumDisc, SiglaTur),
 FOREIGN KEY (CodProf) REFERENCES Professor(CodProf)
 );
@@ -84,4 +88,3 @@ CodTit INTEGER NOT NULL,
 NomeTit VARCHAR(50) NOT NULL,
 PRIMARY KEY (CodTit)
 );
-
