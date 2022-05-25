@@ -88,3 +88,36 @@ CodTit INTEGER NOT NULL,
 NomeTit VARCHAR(50) NOT NULL,
 PRIMARY KEY (CodTit)
 );
+
+INSERT INTO Depto(CodDepto, NomeDepto) 
+VALUES (1, "Matheus"), (2, "JuJu"), (3, "Nico");
+
+INSERT INTO Disciplina(CodDepto, NumDisc, NomeDisc, CreditosDisc)
+VALUES (1, 1, "Programacao", 10), (2, 2, "Banco", 20), (3, 3, "Estrutura", 30); 
+
+INSERT INTO PreReq(CodDepto, NumDisc, CodDeptoPreReq, NumDiscPreReq)
+VALUES (1, 1, 1, 1), (2, 2, 2, 2), (3, 3, 3, 3);
+
+INSERT INTO  Turma (AnoSem, CodDepto, NumDisc, SiglaTur, CapacOfer) 
+VALUES ("1", 1, 1, "POO", 10), ("2", 2, 2, "BD", 20), ("1", 3, 3, "ED", 30);
+
+INSERT INTO Horario(AnoSem, CodDepto, NumDisc, SiglaTur, DiaSem, HoraInicio, NumHoras, CodPred, NumSala)
+VALUES ("1", 1, 1, "POO", 1, 7, 3, 1, 1), ("2", 2, 2, "BD", 2, 7, 3, 2, 2), ("1", 3, 3, "ED", 3, 7, 3, 1, 1);
+
+INSERT INTO Predio(CodPred, NomePred)
+VALUES (1, "Predio1"), (2, "Predio2"), (3, "Predio3");
+
+INSERT INTO Sala (CodPred, NumSala, CapacSala)
+VALUES (1, 1, 10), (2, 2, 20), (3, 3, 30);
+
+INSERT INTO Professor (CodProf, NomeProf, CodTit, CodDepto)
+VALUES (1, "Vitor", 1, 1), (2, "Aline", 2, 2), (3, "Adriana", 3, 3);
+
+INSERT INTO ProfTurma (AnoSem, CodDepto, NumDisc, SiglaTur, CodProf) 
+VALUES ("1", 1, 1, "POO", 1), ("2", 2, 2, "BD", 2), ("1", 3, 3, "ED", 3);
+
+INSERT INTO Titulacao (CodTit, NomeTit)
+VALUES (1, "VNL"), (2, "ADC"), (3, "ADN");
+
+
+
